@@ -15,7 +15,7 @@ import java.util.List;
 public class MovieDbService implements MovideDbDao {
 
     public List<RequestResult> listOfMovies;
-    public final String key = "9fa5af48946037e925e1a20c951e797d";
+    private final String key = "9fa5af48946037e925e1a20c951e797d";
 
 
     MovieDbService() {
@@ -27,12 +27,11 @@ public class MovieDbService implements MovideDbDao {
     public List<RequestResult> movies() {
 
         RestTemplate restTemplate = new RestTemplate();
-        MovieRequest movieRequest = restTemplate.getForObject("https://api.themoviedb.org/3/movie/popular?api_key="+key, MovieRequest.class);
+
+        MovieRequest movieRequest = restTemplate.getForObject("https://api.themoviedb.org/3/movie/popular?api_key=" + key, MovieRequest.class);
         listOfMovies = movieRequest.getResults();
 
         return listOfMovies;
-
-
     }
 
     @Override

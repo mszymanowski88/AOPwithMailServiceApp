@@ -84,11 +84,7 @@ public class MovieRequest {
     @Override
     public String toString() {
         return "MovieRequest{" +
-//                "page=" + page +
                 ", results=" + requestResults +
-//                ", totalPages=" + totalPages +
-//                ", totalResults=" + totalResults +
-//                ", additionalProperties=" + additionalProperties.keySet() +
                 '}';
     }
 }

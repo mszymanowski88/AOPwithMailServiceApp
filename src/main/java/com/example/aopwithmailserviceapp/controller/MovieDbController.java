@@ -1,6 +1,6 @@
 package com.example.aopwithmailserviceapp.controller;
 
-import com.example.aopwithmailserviceapp.mailService.MailAspect;
+import com.example.aopwithmailserviceapp.apect.MailAspect;
 import com.example.aopwithmailserviceapp.model.RequestResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,71 +16,43 @@ import java.util.List;
 public class MovieDbController {
 
 
-    private MovieDbService movieDbService;
-    private List<RequestResult> movieList;
-    String title = "ss";
-    String release = "ff";
-
+    private final MovieDbService movieDbService;
+    private final List<RequestResult> movieList;
 
 
     @Autowired
-
-    MovieDbController(MovieDbService movieDbService)
-    {
-
+    MovieDbController(MovieDbService movieDbService) {
         this.movieDbService = movieDbService;
         movieList = movieDbService.listOfMovies;
 
-
-
     }
-
 
 
     @GetMapping("/movies")
-    public String getMovieList(Model model)
-    {
+    public String getMovieList(Model model) {
 
-    model.addAttribute("movieList",movieDbService.listOfMovies);
+        model.addAttribute("movieList", movieDbService.listOfMovies);
+        model.addAttribute("addMovie", new RequestResult());
 
+        return "movies";
 
-    model.addAttribute("addMovie",new RequestResult());
-
-    return "movies";
     }
-
 
 
     @MailAspect
     @PostMapping("/movies")
-    public String addMovie(@ModelAttribute RequestResult requestResult)
-    {
+    public String addMovie(@ModelAttribute RequestResult requestResult) {
 
-        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-//
-
-            movieDbService.listOfMovies.add(requestResult);
-            for(RequestResult requestResult2 : movieDbService.listOfMovies)
-            {
-
-                System.out.println("XX");
-                System.out.println(requestResult2);
-            }
-
-//
-
+        movieDbService.listOfMovies.add(requestResult);
 
         return "redirect:/movies";
-}
+    }
 
+    @GetMapping("/error")
+    public String incorrectUserInput(Model model) {
 
+        return "error";
+    }
 
-//    @Before("@annotation(MailAspect)")
-//    public void test()
-//    {
-//        System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-//
-//
-//    }
 
 }
