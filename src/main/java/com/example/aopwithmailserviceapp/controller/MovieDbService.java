@@ -31,6 +31,13 @@ public class MovieDbService implements MovideDbDao {
         MovieRequest movieRequest = restTemplate.getForObject("https://api.themoviedb.org/3/movie/popular?api_key=" + key, MovieRequest.class);
         listOfMovies = movieRequest.getResults();
 
+
+         /* Lopp to present results in console   */
+        for(RequestResult requestResult : listOfMovies)
+        {
+            System.out.println(requestResult);
+        }
+
         return listOfMovies;
     }
 

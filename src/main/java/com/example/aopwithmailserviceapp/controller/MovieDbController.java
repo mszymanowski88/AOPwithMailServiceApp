@@ -45,6 +45,12 @@ public class MovieDbController {
 
         movieDbService.listOfMovies.add(requestResult);
 
+        /* Lopp to present results in console   */
+        for(RequestResult listAfterAddingNewMovie : movieDbService.listOfMovies)
+        {
+            System.out.println(listAfterAddingNewMovie);
+        }
+
         return "redirect:/movies";
     }
 
