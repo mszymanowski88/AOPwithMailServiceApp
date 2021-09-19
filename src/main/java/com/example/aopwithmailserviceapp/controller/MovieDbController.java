@@ -45,7 +45,7 @@ public class MovieDbController {
 
         movieDbService.listOfMovies.add(requestResult);
 
-        /* Lopp to present result in console   */
+        /* Loop to present result in console   */
         for(RequestResult requestResultAfterAddingMovie : movieDbService.listOfMovies)
         {
             System.out.println(requestResultAfterAddingMovie);

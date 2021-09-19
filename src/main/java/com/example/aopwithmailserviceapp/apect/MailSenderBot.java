@@ -24,7 +24,7 @@ public class MailSenderBot {
     @After("@annotation(MailAspect)")
     public void sendMail() throws MessagingException {
 
-        mailService.sendMail("michal.szymanowski88@gmail.com","test","mail testowy",true);
+        mailService.sendMail("jabol01@wp.pl","Dodano film","Nowy film został dodany",true);
 
     }
 

@@ -32,7 +32,7 @@ public class MovieDbService implements MovideDbDao {
         listOfMovies = movieRequest.getResults();
 
 
-         /* Lopp to present results in console   */
+         /* Loop to present result in console   */
         for(RequestResult requestResult : listOfMovies)
         {
             System.out.println(requestResult);
