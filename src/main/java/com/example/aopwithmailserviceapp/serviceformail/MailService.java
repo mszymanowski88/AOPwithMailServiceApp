@@ -1,4 +1,4 @@
-package com.example.aopwithmailserviceapp.mailservice;
+package com.example.aopwithmailserviceapp.serviceformail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
